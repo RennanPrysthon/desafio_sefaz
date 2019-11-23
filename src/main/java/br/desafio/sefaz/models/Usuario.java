@@ -1,6 +1,9 @@
 package br.desafio.sefaz.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,15 +11,34 @@ import java.util.Objects;
 @Entity
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
+    @JsonIgnore
     private String senha;
 
     @OneToMany(mappedBy = "usuario")
     private List<Telefone> telefones = new ArrayList<>();
+
+    public Usuario(Long id, String nome, String email, String senha, List<Telefone> telefones) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefones = telefones;
+    }
+
+    public Usuario() {
+    }
+
+    public Integer getQtdNumerosTelefone() {
+        return this.telefones.size();
+    }
 
     public Long getId() {
         return id;

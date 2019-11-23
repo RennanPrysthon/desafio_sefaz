@@ -1,20 +1,45 @@
 package br.desafio.sefaz.models;
 
+import br.desafio.sefaz.dto.TelefoneNewDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Telefone {
+public class Telefone implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer ddd;
     private String numero;
     private String tipo;
 
+    @JsonIgnore
     @ManyToOne
     private Usuario usuario;
+
+    public Telefone(Long id, Integer ddd, String numero, String tipo, Usuario usuario) {
+        this.id = id;
+        this.ddd = ddd;
+        this.numero = numero;
+        this.tipo = tipo;
+        this.usuario = usuario;
+    }
+
+    public Telefone() {
+    }
+
+    public Telefone(TelefoneNewDTO x) {
+        this.id = null;
+        this.numero = x.getNumero();
+        this.ddd = x.getDdd();
+        this.tipo = x.getTipo();
+    }
 
     public Long getId() {
         return id;
