@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ViewController {
-    @GetMapping({"/", "/login"})
+    @GetMapping({"/", "/logar"})
     public String login(@RequestParam(value="name", required=false, defaultValue="World") String name) {
         return "login";
     }

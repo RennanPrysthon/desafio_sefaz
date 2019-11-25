@@ -1,12 +1,11 @@
 package br.desafio.sefaz.models;
 
+import br.desafio.sefaz.models.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Usuario {
@@ -25,6 +24,10 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Telefone> telefones = new ArrayList<>();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PERFIS")
+    private Set<Integer> perfis = new HashSet<>();
+
     public Usuario(Long id, String nome, String email, String senha, List<Telefone> telefones) {
         this.id = id;
         this.nome = nome;
@@ -34,6 +37,14 @@ public class Usuario {
     }
 
     public Usuario() {
+    }
+
+    public Set<Perfil> getPerfis() {
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfis.add(perfil.getCod());
     }
 
     public Integer getQtdNumerosTelefone() {

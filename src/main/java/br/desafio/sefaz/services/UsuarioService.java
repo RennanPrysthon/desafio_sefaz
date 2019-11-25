@@ -3,9 +3,11 @@ package br.desafio.sefaz.services;
 import br.desafio.sefaz.dto.UsuarioNewDTO;
 import br.desafio.sefaz.models.Telefone;
 import br.desafio.sefaz.models.Usuario;
+import br.desafio.sefaz.models.enums.Perfil;
 import br.desafio.sefaz.repositories.TelefoneRepository;
 import br.desafio.sefaz.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +24,9 @@ public class UsuarioService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder pe;
+
     public List<Usuario> findAll() {
         return this.usuarioRepository.findAll();
     }
@@ -34,6 +39,8 @@ public class UsuarioService {
     @Transactional
     public Usuario insert(Usuario obj){
         obj.setId(null);
+        obj.setPerfil(Perfil.USUARIO);
+        obj.setSenha(pe.encode(obj.getSenha()));
         return this.usuarioRepository.save(obj);
     }
 
