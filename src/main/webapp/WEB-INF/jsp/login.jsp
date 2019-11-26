@@ -16,7 +16,7 @@
                 <label for="exampleInputPassword1">Senha</label>
                 <input type="password" class="form-control" id="pass" placeholder="*****">
             </div>
-            <a id="btnEntrar" href="/home" class="btn btn-primary">Entrar</a>
+            <a id="btnEntrar" class="btn btn-primary">Entrar</a>
             <a href="/cadastrar" class="btn btn-primary">Cadastrar</a>
         </form>
     </div>

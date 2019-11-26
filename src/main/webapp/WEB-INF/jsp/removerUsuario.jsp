@@ -16,9 +16,12 @@
                 </li>
             </ul>
         </div>
+        <span class="navbar-text">
+            <a class="nav-link" id="btnSair">Sair</a>
+        </span>
     </nav>
     <div class="main">
-        <div id="usuario">
+        <div id="usuario" class="usuario">
 
         </div>
         <a id="btnRemoverUsuario" class="btn btn-primary">Remover usuario</a>

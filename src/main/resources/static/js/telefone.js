@@ -1,5 +1,11 @@
-
 const api = "http://localhost:8080/telefone"; //Fazer endpoint de login
+const token = localStorage.getItem("token");
+
+$(document).ready(() => {
+    if(token == null) {
+        window.location.href ="/logar";
+    }
+})
 
 $("#btnAddTelefone").click(() => {
     var idUser =  $("#idUser");
@@ -15,6 +21,7 @@ $("#btnAddTelefone").click(() => {
     $.ajax({ 
         type: 'POST',
         url: `${api}/${id}`,
+        headers: {"Authorization": localStorage.getItem('token')},
         contentType: 'application/json',
         data: JSON.stringify(telefone),
         dataType: 'json',
@@ -23,8 +30,12 @@ $("#btnAddTelefone").click(() => {
 });
 
 $("#btnVoltar").click(() => {
-    console.log("voltar");
     var idUser =  $("#idUser");
     var id = idUser.val();
     window.location.href = `/verTelefones?id=${id}`
+})
+
+$("#btnSair").click(() => {
+    localStorage.removeItem("token");
+    window.location.href = "/logar";
 })

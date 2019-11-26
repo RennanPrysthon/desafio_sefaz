@@ -6,3 +6,8 @@
 .main{
     padding: 20px;
 }
+
+.usuario {
+    list-style: none;
+    padding: 20px;
+}

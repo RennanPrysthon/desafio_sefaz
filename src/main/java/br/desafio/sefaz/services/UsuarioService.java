@@ -36,6 +36,11 @@ public class UsuarioService {
         return usuario;
     }
 
+    public Usuario findByEmail(String email) {
+        Usuario usuario = this.usuarioRepository.findByEmail(email);
+        return usuario;
+    }
+
     @Transactional
     public Usuario insert(Usuario obj){
         obj.setId(null);

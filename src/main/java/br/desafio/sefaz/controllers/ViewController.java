@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ViewController {
-    @GetMapping({"/", "/logar"})
-    public String login(@RequestParam(value="name", required=false, defaultValue="World") String name) {
+    @GetMapping({"/logar"})
+    public String login() {
         return "login";
     }
 
@@ -16,28 +16,28 @@ public class ViewController {
         return "cadastrar";
     }       
 
-    @GetMapping({"/home"})
+    @GetMapping({"/", "/home"})
     public String home() {
         return "home";
     }
 
     @GetMapping({"/adicionarTelefone"})
-    public String addFone(@RequestParam("id") Long id) {
+    public String addFone() {
         return "adicionarTelefone";
     }
 
     @GetMapping({"/verTelefones"})
-    public String verFones(@RequestParam("id") Long id) {
+    public String verFones() {
         return "verTelefones";
     }
 
     @GetMapping({"/editarUsuario"})
-    public String editarUsuario(@RequestParam("id") Long id) {
+    public String editarUsuario() {
         return "editar";
     }
 
     @GetMapping({"/removerUsuario"})
-    public String removerUsuario(@RequestParam("id") Long id) {
+    public String removerUsuario() {
         return "removerUsuario";
     }
 }

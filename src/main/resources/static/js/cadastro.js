@@ -1,6 +1,6 @@
 const api = "http://localhost:8080/usuario";
 
-$("#btnCadastrar").click(function() {
+$("#btnCadastrar").click(() => {
     user = {
         nome: $("#nome").val(), 
         email: $("#email").val(),
@@ -22,3 +22,9 @@ $("#btnCadastrar").click(function() {
 $("#btnVoltar").click(() => {
     window.history.back();
 });
+
+$("#btnSair").click(() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    window.location.href = "/logar";
+})

@@ -44,6 +44,12 @@ public class UsuarioController {
         return ResponseEntity.ok().body(usuario);
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ResponseEntity<Usuario> findById(@RequestParam("email") String email){
+        Usuario usuario = this.usuarioService.findByEmail(email);
+        return ResponseEntity.ok().body(usuario);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioNewDTO objDto){
         Usuario obj = this.usuarioService.fromDTO(objDto);
