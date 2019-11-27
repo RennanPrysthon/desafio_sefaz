@@ -1,4 +1,4 @@
-const api = "http://localhost:8080/login"; //Fazer endpoint de login
+const api = "https://rennan-desafio-sefaz.herokuapp.com/login"; //Fazer endpoint de login
 
 $(document).ready(()=>{
     localStorage.removeItem("token");
@@ -23,7 +23,7 @@ $("#btnEntrar").click(() => {
         success: (msg, status, jqXHR) => {
             localStorage.setItem("token", jqXHR.getResponseHeader('Authorization'));
             $.ajax({
-                url: `http://localhost:8080/usuario?email=${email}` ,
+                url: `https://rennan-desafio-sefaz.herokuapp.com/usuario?email=${email}` ,
                 type: 'GET',
                 // Fetch the stored token from localStorage and set in the header
                 headers: {"Authorization": localStorage.getItem('token')},

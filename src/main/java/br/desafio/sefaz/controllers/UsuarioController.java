@@ -1,6 +1,5 @@
 package br.desafio.sefaz.controllers;
 
-import br.desafio.sefaz.dto.TelefoneNewDTO;
 import br.desafio.sefaz.dto.UsuarioDTO;
 import br.desafio.sefaz.dto.UsuarioNewDTO;
 import br.desafio.sefaz.models.Telefone;
@@ -17,7 +16,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "https://rennan-desafio-sefaz.herokuapp.com")
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {

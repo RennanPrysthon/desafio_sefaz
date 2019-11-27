@@ -1,4 +1,4 @@
-const api = "http://localhost:8080/usuario"; //Fazer endpoint de login
+const api = "https://rennan-desafio-sefaz.herokuapp.com/usuario"; //Fazer endpoint de login
 const token = localStorage.getItem("token");
 
 $(document).ready(()=> {

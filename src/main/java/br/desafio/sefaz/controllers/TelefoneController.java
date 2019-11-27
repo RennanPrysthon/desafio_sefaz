@@ -1,8 +1,6 @@
 package br.desafio.sefaz.controllers;
 
 import br.desafio.sefaz.dto.TelefoneNewDTO;
-import br.desafio.sefaz.dto.UsuarioDTO;
-import br.desafio.sefaz.dto.UsuarioNewDTO;
 import br.desafio.sefaz.models.Telefone;
 import br.desafio.sefaz.models.Usuario;
 import br.desafio.sefaz.repositories.UsuarioRepository;
@@ -13,11 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "https://rennan-desafio-sefaz.herokuapp.com")
 @RestController
 @RequestMapping(value = "/telefone")
 public class TelefoneController {

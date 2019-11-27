@@ -1,7 +1,6 @@
 package br.desafio.sefaz.services;
 
 import br.desafio.sefaz.dto.TelefoneNewDTO;
-import br.desafio.sefaz.dto.UsuarioNewDTO;
 import br.desafio.sefaz.models.Telefone;
 import br.desafio.sefaz.models.Usuario;
 import br.desafio.sefaz.repositories.TelefoneRepository;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
